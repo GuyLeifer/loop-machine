@@ -26,7 +26,7 @@ const iconStyle = {
 }
 
 const beats = [
-    { audio: futureFunk, icon: <GiCompactDisc style={iconStyle} style={iconStyle} /> },
+    { audio: futureFunk, icon: <GiCompactDisc style={iconStyle} /> },
     { audio: stutterBreak, icon: <FaHeartbeat style={iconStyle} /> },
     { audio: bassFunk, icon: <GiGuitarBassHead style={iconStyle} /> },
     { audio: electricGuitar, icon: <GiGuitar style={iconStyle} /> },
