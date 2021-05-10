@@ -1,0 +1,5 @@
+.loop-machine {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 50%;
+}
