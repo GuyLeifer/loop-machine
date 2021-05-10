@@ -1,5 +1,7 @@
 import './LoopMachine.css';
+import Header from './general/Header';
 import Beat from './Beat';
+import Controller from './Controller';
 
 // audio
 import futureFunk from '../audioFiles/future_funk_beats_25.mp3'
@@ -40,8 +42,12 @@ const beats = [
 function LoopMachine() {
 
     return (
-        <div className="loop-machine">
-            {beats.map(beat => <Beat beat={beat} />)}
+        <div className="container">
+            <Header />
+            <div className="loop-machine">
+                {beats.map(beat => <Beat beat={beat} />)}
+            </div>
+            <Controller />
         </div>
     )
 }

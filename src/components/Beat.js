@@ -28,8 +28,9 @@ function Beat({ beat }) {
         margin: "80px",
         backgroundColor: beatState ? "#777" : "#444",
         position: "relative",
-        boxShadow: beatState ? "0px 0px 10px 10px green" : "0px 0px 10px 10px #eff",
+        boxShadow: beatState ? "0 0 10px 10px #eff, 0 0 15px 15px green" : "0 0 10px 10px #eff, 0 0 12px 12px #0ff",
         borderRadius: "10%",
+        cursor: "pointer",
     }
 
     return (

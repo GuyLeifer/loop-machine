@@ -10,3 +10,7 @@
     width: "70px";
     margin: "70px";
 }
+
+.container {
+    position: relative;
+}
