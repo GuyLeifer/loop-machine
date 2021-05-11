@@ -1,13 +1,33 @@
 import { atom, selector } from 'recoil';
 
+export const loopStartState = atom({
+    key: 'loopStartState',
+    default: false,
+});
+
 export const playAllState = atom({
     key: 'playAllState',
     default: false,
 });
 
-export const beatsPlayedState = atom({
-    key: 'beatPlayedState',
-    default: 0,
+export const playRecordState = atom({
+    key: 'playRecordState',
+    default: false,
+});
+
+export const recordState = atom({
+    key: 'recordState',
+    default: false,
+});
+
+export const recordObjectState = atom({
+    key: 'recordObjectState',
+    default: [],
+});
+
+export const firstPlayState = atom({
+    key: 'firstPlayState',
+    default: false,
 });
 
 export const startTimeState = atom({

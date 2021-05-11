@@ -1,8 +1,7 @@
-import './Beat.css';
 import { useRef, useState, useEffect } from 'react';
 
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { startTimeState, endTimeState, beatsPlayedState, playAllState } from '../recoil/state';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { startTimeState, endTimeState, firstPlayState, playAllState, recordState, recordObjectState, loopStartState, playRecordState } from '../recoil/state';
 
     const miniBeatStyle = {
         position: "absolute",
@@ -17,51 +16,55 @@ function Beat({ beat, index }) {
 
     const [beatState, setBeatState] = useState(false);
     const [beatStateCheck, setBeatStateCheck] = useState(false);
-    const [beatsPlayed, setBeatsPlayed] = useRecoilState(beatsPlayedState);
+    const [firstPlay, setFirstPlay] = useRecoilState(firstPlayState);
     const [startTime, setStartTime] = useRecoilState(startTimeState);
-    const [endTime, setEndTime] = useRecoilState(endTimeState);
+    
+    const loopStart = useRecoilValue(loopStartState);
     const playAll = useRecoilValue(playAllState);
+    const record = useRecoilValue(recordState);
+    const playRecord = useRecoilValue(playRecordState);
+    const [recordObject,setRecordObject] = useRecoilState(recordObjectState);
+    
     const beatRef = useRef(null);
 
     useEffect(() => { 
         (async () => {
-            if (beatState) {
-                if (beatsPlayed === 0) {
-                    beatRef.current.play();
-                    setStartTime(Number(new Date()));
+            if (loopStart || record || playRecord) {
+                if (beatState) {
+                    if (!startTime || startTime === 0) {
+                        beatRef.current.play();
+                        setStartTime(Number(new Date()));
+                        record && setRecordObject([{time: 0, index: index, type: "start"}])
+                    } else {
+                        const timeDelyed = 8000 - ((Number(new Date()) - startTime) % 8000);
+                        setBeatStateCheck("on")
+                        record && setRecordObject(prev => [...prev , {time: new Date() - startTime, index: index, type: "check"}])
+                        setTimeout(() => {
+                            setBeatStateCheck(true);
+                        }, timeDelyed);
+                    }   
                 } else {
-                    const timeDelyed = 8000 - (Number(new Date()) - startTime);
-                    setBeatStateCheck("on")
-                    setTimeout(() => {
-                        setBeatStateCheck(true);
-                    }, timeDelyed);
+                    record.length > 0 && setRecordObject(prev => [...prev , {time: new Date() - startTime, index: index, type: "pause"}])
+                    beatRef.current.pause();
+                    if (firstPlay) {
+                        setStartTime(null);
+                    } 
                 } 
-                setBeatsPlayed(beatsPlayed + 1);
-            } else {
+            } else { // restart
+                setStartTime(null);
+                setBeatState(false)
+                setBeatStateCheck(false)
                 beatRef.current.pause();
-                if (beatsPlayed === 1) {
-                    setEndTime(Number(new Date()));
-                }
-                if (beatsPlayed > 0) {
-                    setBeatsPlayed(beatsPlayed - 1);
-                }
-            }  
+                beatRef.current.currentTime = 0;
+            }
         })()
-    }, [beatState])
-
-    useEffect(() => {
-        // set the start and end time of playing
-        if (beatsPlayed === 0) {
-            setEndTime(Number(new Date()));
-        } else { // fix in record!!!!!
-            setStartTime(Number(new Date()));
-        }
-    }, [beatsPlayed])
+    }, [beatState, loopStart, record])
 
     useEffect(() => {
         // check if beat button still clicked
         if (beatStateCheck === true && beatState) {
             beatRef.current.play();
+            record && setRecordObject(prev => [...prev , {time: new Date() - startTime, index: index, type: "play"}])
         }
     }, [beatStateCheck])
 
@@ -75,21 +78,45 @@ function Beat({ beat, index }) {
         } 
     }, [playAll])
 
+    console.log(recordObject)
+
+    useEffect(() => {
+        playRecord && setStartTime(0);
+    }, [playRecord])
+
+    useEffect(() => {
+        if (startTime === 0) {
+            const recordToPlay = recordObject.filter(record => record.index === index);
+            recordToPlay.forEach((record, i) => {
+                console.log(i, index)
+                if (record.index === index) {
+                    if (record.type === "start") {
+                        setBeatState(true)
+                    } else {
+                        setTimeout(() => {
+                            setBeatState(true)
+                        }, record.time)
+                    }
+                }
+            })
+        }
+    }, [startTime])
+
+    const clickBeatHandle = () => {
+        if (!playAll && (loopStart || record)) {
+            setBeatState(prev => !prev)
+        }
+    }
+
     const beatStyle = {
         height: "80px",
         width: "80px",
         margin: "80px",
-        backgroundColor: (beatState || playAll) ? "#777" : "#444",
+        backgroundColor: ((beatState && (loopStart || record || playRecord)) || playAll) ? "#777" : "#444",
         position: "relative",
-        boxShadow: beatStateCheck === "on" ? "0 0 10px 10px #eff, 0 0 15px 15px yellow" : (beatState || playAll) ? "0 0 10px 10px #eff, 0 0 15px 15px green" : "0 0 10px 10px #eff, 0 0 12px 12px #0ff",
+        boxShadow: beatStateCheck === "on" ? "0 0 10px 10px #eff, 0 0 15px 15px yellow" : ((beatState && (loopStart || record || playRecord)) || playAll) ? "0 0 10px 10px #eff, 0 0 15px 15px green" : "0 0 10px 10px #eff, 0 0 12px 12px #0ff",
         borderRadius: "10%",
         cursor: "pointer",
-    }
-
-    const clickBeatHandle = () => {
-        if (!playAll) {
-            setBeatState(prev => !prev)
-        }
     }
 
     return (
