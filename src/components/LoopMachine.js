@@ -45,7 +45,7 @@ function LoopMachine() {
         <div className="container">
             <Header />
             <div className="loop-machine">
-                {beats.map(beat => <Beat beat={beat} />)}
+                {beats.map((beat, index) => <Beat beat={beat} key={index} index={index} />)}
             </div>
             <Controller />
         </div>
