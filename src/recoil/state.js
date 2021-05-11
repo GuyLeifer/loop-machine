@@ -1,7 +1,7 @@
 import { atom, selector } from 'recoil';
 
-export const powerState = atom({
-    key: 'powerState',
+export const playAllState = atom({
+    key: 'playAllState',
     default: false,
 });
 

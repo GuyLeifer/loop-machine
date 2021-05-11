@@ -1,8 +1,8 @@
 import './Beat.css';
 import { useRef, useState, useEffect } from 'react';
 
-import { useRecoilState } from 'recoil';
-import { startTimeState, endTimeState, beatsPlayedState } from '../recoil/state';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { startTimeState, endTimeState, beatsPlayedState, playAllState } from '../recoil/state';
 
     const miniBeatStyle = {
         position: "absolute",
@@ -20,7 +20,7 @@ function Beat({ beat, index }) {
     const [beatsPlayed, setBeatsPlayed] = useRecoilState(beatsPlayedState);
     const [startTime, setStartTime] = useRecoilState(startTimeState);
     const [endTime, setEndTime] = useRecoilState(endTimeState);
-
+    const playAll = useRecoilValue(playAllState);
     const beatRef = useRef(null);
 
     useEffect(() => { 
@@ -65,13 +65,23 @@ function Beat({ beat, index }) {
         }
     }, [beatStateCheck])
 
+    useEffect(() => {
+        if (playAll) {
+            beatRef.current.play()
+        }
+        else {
+            beatRef.current.pause();
+            beatRef.current.currentTime = 0;
+        } 
+    }, [playAll])
+
     const beatStyle = {
         height: "80px",
         width: "80px",
         margin: "80px",
-        backgroundColor: beatState ? "#777" : "#444",
+        backgroundColor: (beatState || playAll) ? "#777" : "#444",
         position: "relative",
-        boxShadow: beatStateCheck === "on" ? "0 0 10px 10px #eff, 0 0 15px 15px yellow" : beatState ? "0 0 10px 10px #eff, 0 0 15px 15px green" : "0 0 10px 10px #eff, 0 0 12px 12px #0ff",
+        boxShadow: beatStateCheck === "on" ? "0 0 10px 10px #eff, 0 0 15px 15px yellow" : (beatState || playAll) ? "0 0 10px 10px #eff, 0 0 15px 15px green" : "0 0 10px 10px #eff, 0 0 12px 12px #0ff",
         borderRadius: "10%",
         cursor: "pointer",
     }

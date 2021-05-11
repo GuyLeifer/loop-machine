@@ -1,5 +1,9 @@
 import { FaPlayCircle, FaStopCircle, FaRecordVinyl } from "react-icons/fa";
 
+// recoil
+import { useSetRecoilState } from 'recoil';
+import { playAllState } from '../recoil/state';
+
 const controllerStyle = {
     position: "absolute",
     right: "10%",
@@ -26,12 +30,15 @@ const iconsDivStyle = {
 }
 
 function Controller() {
+
+    const setPlayAll = useSetRecoilState(playAllState);
+
     return (
         <div className="controller" style={controllerStyle}>
-            <div className="iconsDiv" style={iconsDivStyle}>
+            <div className="iconsDiv" style={iconsDivStyle} onClick={() => setPlayAll(true)}>
                 <FaPlayCircle style={iconStyle} />
             </div>
-            <div className="iconsDiv" style={iconsDivStyle}>
+            <div className="iconsDiv" style={iconsDivStyle} onClick={() => setPlayAll(false)}>
                 <FaStopCircle style={iconStyle} />
             </div>
             <div className="iconsDiv" style={iconsDivStyle}>
