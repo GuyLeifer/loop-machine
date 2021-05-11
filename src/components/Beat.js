@@ -86,9 +86,15 @@ function Beat({ beat, index }) {
         cursor: "pointer",
     }
 
+    const clickBeatHandle = () => {
+        if (!playAll) {
+            setBeatState(prev => !prev)
+        }
+    }
+
     return (
         <div className="beat" style={beatStyle}>
-            <div style={miniBeatStyle} onClick={() => setBeatState(prev => !prev)}>
+            <div style={miniBeatStyle} onClick={clickBeatHandle}>
                 <audio ref={beatRef} src={audio} loop={true} />
                 {icon}
             </div>
