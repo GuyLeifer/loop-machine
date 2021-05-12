@@ -1,0 +1,16 @@
+.loop-machine {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 50%;
+}
+
+.icon {
+    position: absolute;
+    height: "70px";
+    width: "70px";
+    margin: "70px";
+}
+
+.container {
+    position: relative;
+}

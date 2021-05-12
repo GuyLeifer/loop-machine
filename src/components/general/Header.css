@@ -1,0 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+
+.header {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 400%;
+    position: absolute;
+    right: 3%;
+    color: #eff;
+    text-shadow: 3px 3px 3px rgb(131, 247, 247);
+    margin: 20px auto;
+}
