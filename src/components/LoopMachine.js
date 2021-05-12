@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import './LoopMachine.css';
 import Header from './general/Header';
 import Beat from './Beat';
@@ -41,13 +43,15 @@ const beats = [
 
 function LoopMachine() {
 
+    const [recordObject, setRecordObject] = useState([])
+
     return (
         <div className="container">
             <Header />
             <div className="loop-machine">
-                {beats.map((beat, index) => <Beat beat={beat} key={index} index={index} />)}
+                {beats.map((beat, index) => <Beat beat={beat} key={index} index={index} recordObject={recordObject}/>)}
             </div>
-            <Controller />
+            <Controller setRecordObject={setRecordObject}/>
         </div>
     )
 }

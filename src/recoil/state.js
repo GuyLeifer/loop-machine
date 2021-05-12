@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil';
+import { atom } from 'recoil';
 
 export const loopStartState = atom({
     key: 'loopStartState',
@@ -25,11 +25,6 @@ export const recordObjectState = atom({
     default: [],
 });
 
-export const firstPlayState = atom({
-    key: 'firstPlayState',
-    default: false,
-});
-
 export const startTimeState = atom({
     key: 'startTimeState',
     default: null,
@@ -38,14 +33,4 @@ export const startTimeState = atom({
 export const endTimeState = atom({
     key: 'endTimeState',
     default: null,
-});
-
-export const timeToNextLoopState = selector({
-    key: 'timeToNextLoopState',
-    get: ({ get }) => {
-        const startTime = get(startTimeState);
-        const endTime = get(endTimeState);
-
-        return endTime - startTime;
-    },
 });
