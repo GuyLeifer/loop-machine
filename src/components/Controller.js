@@ -8,7 +8,7 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { playAllState, recordState, recordObjectState, loopStartState, playRecordState, startTimeState, endTimeState } from '../recoil/state';
 
 // style 
-import { controllerStyle, iconStyle, iconsDivStyle, iconsDivDisabledStyle, iconsDivRecordStyle } from './style/Controller';
+import './style/Controller.css';
 
 function Controller({ setRecordObject }) {
 
@@ -21,7 +21,7 @@ function Controller({ setRecordObject }) {
     const recordObject = useRecoilValue(recordObjectState);
 
     const loopStarter = () => {
-        !record && !playAll && !playRecord &&  setLoopStart(prev => !prev)
+        !record && !playAll && !playRecord && setLoopStart(prev => !prev)
     }
 
     const playAller = () => {
@@ -39,22 +39,22 @@ function Controller({ setRecordObject }) {
     }
 
     return (
-        <div className="controller" style={controllerStyle}>
-            <div className="iconsDiv" style={(!playAll && !record && !playRecord) ? iconsDivStyle : iconsDivDisabledStyle} onClick={loopStarter}>
-                {!loopStart && <FaPowerOff style={iconStyle} />}
-                {(loopStart && !playAll && !record) && <FaStopCircle style={iconStyle} />}
+        <div className="controllerStyle">
+            <div className={(!playAll && !record && !playRecord) ? "iconsDivStyle" : "iconsDivDisabledStyle"} onClick={loopStarter}>
+                {!loopStart && <FaPowerOff className="iconStyle" />}
+                {(loopStart && !playAll && !record) && <FaStopCircle className="iconStyle" />}
             </div>
-            <div className="iconsDiv" style={(!loopStart && !record && !playRecord) ? iconsDivStyle : iconsDivDisabledStyle} onClick={playAller}>
-                {!playAll && <TiThSmallOutline style={iconStyle} />}
-                {(playAll && !loopStart && !record) && <FaStopCircle style={iconStyle} />}
+            <div className={(!loopStart && !record && !playRecord) ? "iconsDivStyle" : "iconsDivDisabledStyle"} onClick={playAller}>
+                {!playAll && <TiThSmallOutline className="iconStyle" />}
+                {(playAll && !loopStart && !record) && <FaStopCircle className="iconStyle" />}
             </div>
-            <div className="iconsDiv" style={record ? iconsDivRecordStyle : (!loopStart && !playAll && !playRecord) ? iconsDivStyle : iconsDivDisabledStyle} onClick={recorder}>
-                <FaRecordVinyl style={iconStyle} />
+            <div className={record ? "iconsDivRecordStyle" : (!loopStart && !playAll && !playRecord) ? "iconsDivStyle" : "iconsDivDisabledStyle"} onClick={recorder}>
+                <FaRecordVinyl className="iconStyle" />
             </div>
-            { (recordObject.length > 0) && !record && ( 
-                <div className="iconsDiv" style={(!playAll && !loopStart && !record) ? iconsDivStyle : iconsDivDisabledStyle}>
-                {playRecord ? <BiStopCircle style={iconStyle} onClick={() => setPlayRecord(false)}/> : <BiPlayCircle style={iconStyle} onClick={playRecorder}/>}
-            </div>  
+            { (recordObject.length > 0) && !record && (
+                <div className={(!playAll && !loopStart && !record) ? "iconsDivStyle" : "iconsDivDisabledStyle"}>
+                    {playRecord ? <BiStopCircle className="iconStyle" onClick={() => setPlayRecord(false)} /> : <BiPlayCircle className="iconStyle" onClick={playRecorder} />}
+                </div>
             )}
         </div>
     )

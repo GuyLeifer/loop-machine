@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import './LoopMachine.css';
-import Header from './general/Header';
+import './style/LoopMachine.css';
 import Beat from './Beat';
 import Controller from './Controller';
 
@@ -30,15 +29,15 @@ const iconStyle = {
 }
 
 const beats = [
-    { audio: futureFunk, icon: <GiCompactDisc style={iconStyle} /> },
-    { audio: stutterBreak, icon: <FaHeartbeat style={iconStyle} /> },
-    { audio: bassFunk, icon: <GiGuitarBassHead style={iconStyle} /> },
-    { audio: electricGuitar, icon: <GiGuitar style={iconStyle} /> },
-    { audio: stompySlosh, icon: <GiDrum style={iconStyle} /> },
-    { audio: grooveTango, icon: <GiTambourine style={iconStyle} /> },
-    { audio: mazePolitics, icon: < GiMazeSaw style={iconStyle} /> },
-    { audio: pasGroove, icon: <DiGroovy style={iconStyle} /> },
-    { audio: silentStar, icon: <GiStarsStack style={iconStyle} /> },
+    { audio: futureFunk, icon: <GiCompactDisc className="icon" /> },
+    { audio: stutterBreak, icon: <FaHeartbeat className="icon" /> },
+    { audio: bassFunk, icon: <GiGuitarBassHead className="icon" /> },
+    { audio: electricGuitar, icon: <GiGuitar className="icon" /> },
+    { audio: stompySlosh, icon: <GiDrum className="icon" /> },
+    { audio: grooveTango, icon: <GiTambourine className="icon" /> },
+    { audio: mazePolitics, icon: < GiMazeSaw className="icon" /> },
+    { audio: pasGroove, icon: <DiGroovy className="icon" /> },
+    { audio: silentStar, icon: <GiStarsStack className="icon" /> },
 ]
 
 function LoopMachine() {
@@ -47,11 +46,10 @@ function LoopMachine() {
 
     return (
         <div className="container">
-            <Header />
             <div className="loop-machine">
-                {beats.map((beat, index) => <Beat beat={beat} key={index} index={index} recordObject={recordObject}/>)}
+                {beats.map((beat, index) => <Beat beat={beat} key={index} index={index} recordObject={recordObject} />)}
             </div>
-            <Controller setRecordObject={setRecordObject}/>
+            <Controller setRecordObject={setRecordObject} />
         </div>
     )
 }

@@ -1,5 +1,10 @@
 import { atom } from 'recoil';
 
+export const widthState = atom({
+    key: 'widthState',
+    default: false,
+});
+
 export const loopStartState = atom({
     key: 'loopStartState',
     default: false,

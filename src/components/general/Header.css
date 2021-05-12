@@ -3,9 +3,15 @@
 .header {
     font-family: 'Exo 2', sans-serif;
     font-size: 400%;
-    position: absolute;
-    right: 3%;
+    text-align: center;
     color: #eff;
     text-shadow: 3px 3px 3px rgb(131, 247, 247);
-    margin: 20px auto;
+    margin: 5% auto 10% auto;
+}
+
+@media only screen and (min-width: 1100px) {
+    .header {
+        font-size: 600%;
+        margin-bottom: 5%;
+    }
 }
