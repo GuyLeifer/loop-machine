@@ -41,18 +41,21 @@
     border-radius: 50%;
 }
 
-@media only screen and (max-width: 413px) {
+@media only screen and (max-width: 510px) {
     .iconsDivStyle {
+        margin: 3% auto;
         height: 50px;
         width: 50px;
     }
 
     .iconsDivDisabledStyle {
+        margin: 3% auto;
         height: 50px;
         width: 50px;
     }
 
     .iconsDivRecordStyle {
+        margin: 3% auto;
         height: 50px;
         width: 50px;
     }
@@ -64,6 +67,11 @@
         height: 44px;
         width: 44px;
         cursor: pointer;
+    }
+
+    .controllerStyle {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 

@@ -5,20 +5,27 @@
 
 .loop-machine {
     margin: 0 auto;
-    max-width: 50%;
-    max-height: 500px;
+    /* max-height: 500px; */
+    width: 80vw;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
-@media only screen and (min-width: 1050px) {
+@media only screen and (min-width: 1050px) and (min-height: 550px) {
     .container {
         flex-direction: row;
     }
 }
 
-@media only screen and (max-width: 650px) {
-    .loop-machine {
-        width: 100;
+/* @media only screen and (min-height: 550px) {
+    .container {
+        flex-direction: row;
     }
-}
+} */
+
+/* @media only screen and (max-width: 650px) or (max-height: 780px){
+    .loop-machine {
+        width: 80%;
+        margin: 0 10%;
+    }
+} */
