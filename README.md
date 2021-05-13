@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Loop Machine
+## Enjoy The Loop Machine Service!
+    this is a repository of a Loop Machine service.
+    the service offers 9 beats you can control and looping.
+    the service also provides a record of of playing.
+###
+the repository includes client side of React app with usage of React package - "react-icons".  
+the repository use state management of the package "recoil".
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Loop Machine
+    the Loop Machine contains 9 different beats you can control and play. the machine will add played beats on the next loop played.
+![Loop Machine](./images/loop-machine.png "Loop Machine")
+## Controller
+    In the controller you can see the options you can do with the Loop Machine.  
+    The first option is start playing loop. The second option is play all beats together, the third is record, and the fourth is play the last record.  
+    you also can control the speed of the Loop Machine in the slider.
+![Controller](./images/controller.png "Controller")
+## Beats
+    The beats in the Loop Machine will change their look when you change the play state of them.
+    Played beats will be green, future played beats will be yellow, and unplayed beats will be blue.
+    If you change your opinion about a beat, you can turn him of immediately, and if the loop is a future played beat he will still be yellow, but with dark background, so you can see if it will play in the next loop or will not.
+![Beats](./images/beats.png "Beats")
+## Responsive
+    the service is responsive and can be use on desktop and mobile devices.
+![Responsive](./images/responsive.png "Responsive")
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Enjoy :)
