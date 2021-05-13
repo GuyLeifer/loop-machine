@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 
 // recoil
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { startTimeState, endTimeState, playAllState, recordState, recordObjectState, loopStartState, playRecordState } from '../recoil/state';
+import { startTimeState, endTimeState, playAllState, recordState, recordObjectState, loopStartState, playRecordState, speedState } from '../recoil/state';
 
 // style 
 import './style/Beat.css';
@@ -21,6 +21,7 @@ function Beat({ beat, index, recordObject }) {
     const loopStart = useRecoilValue(loopStartState);
     const playAll = useRecoilValue(playAllState);
     const record = useRecoilValue(recordState);
+    const speed = useRecoilValue(speedState);
     const [playRecord, setPlayRecord] = useRecoilState(playRecordState);
 
     const audioRef = useRef(null);
@@ -35,7 +36,7 @@ function Beat({ beat, index, recordObject }) {
                         setStartTime(Number(new Date()));
                         record && setRecordObject([{ time: 0, index: index, type: "start" }])
                     } else {
-                        const timeDelyed = 8000 - ((Number(new Date()) - startTime) % 8000);
+                        const timeDelyed = 8000 * (1 / speed) - ((Number(new Date()) - startTime) % 8000 * (1 / speed));
                         setBeatStateCheck("on")
                         record && setRecordObject(prev => [...prev, { time: new Date() - startTime, index: index, type: "check" }])
                         setTimeout(() => {
@@ -43,7 +44,7 @@ function Beat({ beat, index, recordObject }) {
                         }, timeDelyed);
                     }
                 } else {
-                    record && setRecordObject(prev => [...prev, { time: new Date() - startTime, index: index, type: "pause" }])
+                    record && startTime && setRecordObject(prev => [...prev, { time: new Date() - startTime, index: index, type: "pause" }])
                     audioRef.current.pause();
                 }
             } else { // restart
@@ -108,14 +109,13 @@ function Beat({ beat, index, recordObject }) {
     }, [playAll, loopStart, record])
 
     if (beatRef.current) {
+        audioRef.current.playbackRate = speed
         beatRef.current.style.boxShadow = beatStateCheck === "on" ? "0 0 10px 10px #eff, 0 0 15px 15px yellow" : ((beatState && (loopStart || record || playRecord)) || playAll) ? "0 0 10px 10px #eff, 0 0 15px 15px green" : "0 0 10px 10px #eff, 0 0 12px 12px #0ff"
         beatRef.current.style.backgroundColor = ((beatState && (loopStart || record || playRecord)) || playAll) ? "#777" : "#444"
     }
 
     return (
-        <div className="beat"
-            ref={beatRef}
-        >
+        <div className="beat" ref={beatRef}>
             <div className="miniBeatStyle" onClick={clickBeatHandle}>
                 <audio ref={audioRef} src={audio} loop={true} />
                 {icon}

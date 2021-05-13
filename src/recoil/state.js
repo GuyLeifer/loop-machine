@@ -1,10 +1,5 @@
 import { atom } from 'recoil';
 
-export const widthState = atom({
-    key: 'widthState',
-    default: false,
-});
-
 export const loopStartState = atom({
     key: 'loopStartState',
     default: false,
@@ -38,4 +33,9 @@ export const startTimeState = atom({
 export const endTimeState = atom({
     key: 'endTimeState',
     default: null,
+});
+
+export const speedState = atom({
+    key: 'speedState',
+    default: 1,
 });

@@ -4,13 +4,6 @@
   padding-bottom: 100%;
 }
 
-/* .beat {
-  width: 50px;
-  margin: 50px;
-  border-radius: 10%;
-  cursor: pointer;
-} */
-
 .beat {
   position: relative;
   width: 30%;
@@ -24,7 +17,6 @@
   z-index: 1;
   height: 100%;
   width: 100%;
-  /* margin: 10px; */
 }
 
 .icon {
@@ -34,59 +26,28 @@
   margin: 0 auto;
 }
 
-/* 
-@media only screen and (max-width: 1050px) {
+
+@media only screen and (min-width: 1050px) {
   .beat {
-    width: 70px;
-    margin: 30px auto;
-  }
-
-  .icon {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-  }
-} */
-
-/* @media only screen and (min-width: 1050px) {
-  .beat {
-    width: 100px;
-    margin: 40px auto;
-  }
-
-  .icon {
-    position: absolute;
-    width: 150%;
-    height: 150%;
-    margin: 0;
+    margin: 20% auto;
   }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (min-width: 1400px) {
   .beat {
-    width: 50px;
-    margin: 40px auto;
+    margin: 15% auto;
   }
+}
 
-  .icon {
-    position: absolute;
-    width: 60%;
-    height: 60%;
-    margin: 0;
-  }
-} */
-
-/* @media only screen and (max-width: 650px) {
+@media only screen and (min-width: 1600px) {
   .beat {
-    width: 50px;
-    margin: 40px 13px;
+    margin: 50px auto;
   }
+}
 
-  .icon {
-    position: absolute;
-    width: 60%;
-    height: 60%;
-    margin: 0;
+@media only screen and (max-width: 410px) {
+  .beat {
+    width: 50%;
+    margin: 15px auto;
   }
-} */
+}

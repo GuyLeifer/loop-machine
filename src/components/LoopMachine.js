@@ -20,14 +20,6 @@ import { GiGuitar, GiGuitarBassHead, GiDrum, GiCompactDisc, GiTambourine, GiStar
 import { FaHeartbeat } from 'react-icons/fa';
 import { DiGroovy } from 'react-icons/di';
 
-const iconStyle = {
-    position: "absolute",
-    height: "50px",
-    width: "50px",
-    left: 10,
-    top: 10,
-}
-
 const beats = [
     { audio: futureFunk, icon: <GiCompactDisc className="icon" /> },
     { audio: stutterBreak, icon: <FaHeartbeat className="icon" /> },
