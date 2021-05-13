@@ -69,6 +69,7 @@ function Controller({ setRecordObject }) {
     }
 
     const playRecorder = () => {
+        setSpeedState(speed);
         setRecordObject(recordObject);
         setPlayRecord(true);
     }
