@@ -4,6 +4,7 @@
     the service offers 9 beats you can control and looping.
     the service also provides a record of of playing.
 ###
+You can see the Loop Machine on : https://guyleifer.github.io/loop-machine/.  
 the repository includes client side of React app with usage of React package - "react-icons".  
 the repository use state management of the package "recoil".
 
