@@ -11,21 +11,21 @@ function Beat({ beat, index, recordObject }) {
 
     const { audio, icon } = beat;
 
-    const [beatState, setBeatState] = useState(false);
-    const [beatStateCheck, setBeatStateCheck] = useState(false);
+    const [beatState, setBeatState] = useState(false); // beat clicked state
+    const [beatStateCheck, setBeatStateCheck] = useState(false); // check if the beat still clicked until next loop
 
-    const [startTime, setStartTime] = useRecoilState(startTimeState);
-    const endTime = useRecoilValue(endTimeState);
-    const setRecordObject = useSetRecoilState(recordObjectState);
+    const [startTime, setStartTime] = useRecoilState(startTimeState); // record start time
+    const endTime = useRecoilValue(endTimeState); // record end time
+    const setRecordObject = useSetRecoilState(recordObjectState); // record 
 
-    const loopStart = useRecoilValue(loopStartState);
-    const playAll = useRecoilValue(playAllState);
-    const record = useRecoilValue(recordState);
-    const speed = useRecoilValue(speedState);
-    const [playRecord, setPlayRecord] = useRecoilState(playRecordState);
+    const loopStart = useRecoilValue(loopStartState); // loop mode
+    const playAll = useRecoilValue(playAllState); // play all mode
+    const record = useRecoilValue(recordState); // record mode
+    const speed = useRecoilValue(speedState); // speed playback rate
+    const [playRecord, setPlayRecord] = useRecoilState(playRecordState); // play record mode
 
-    const audioRef = useRef(null);
-    const beatRef = useRef(null);
+    const audioRef = useRef(null); // audio element
+    const beatRef = useRef(null); // beat element (styling purpose)
 
     useEffect(() => {
         (async () => {
@@ -35,11 +35,11 @@ function Beat({ beat, index, recordObject }) {
                         audioRef.current.play();
                         setStartTime(Number(new Date()));
                         record && setRecordObject([{ time: 0, index: index, type: "start" }])
-                    } else {
+                    } else { // delay the beat until next loop start
                         const timeDelyed = 8000 * (1 / speed) - ((Number(new Date()) - startTime) % 8000 * (1 / speed));
                         setBeatStateCheck("on")
                         record && setRecordObject(prev => [...prev, { time: new Date() - startTime, index: index, type: "check" }])
-                        setTimeout(() => {
+                        setTimeout(() => { // check the beat status
                             setBeatStateCheck(true);
                         }, timeDelyed);
                     }
@@ -84,7 +84,7 @@ function Beat({ beat, index, recordObject }) {
     useEffect(() => {
         if (startTime === 0) {
             const recordToPlay = recordObject.filter(record => record.index === index); // filter only relevant records
-            recordToPlay.forEach((record) => {
+            recordToPlay.forEach((record) => { // automatically do the record action
                 if (record.index === index) {
                     if (record.type === "start") {
                         setBeatState(true)
@@ -108,7 +108,7 @@ function Beat({ beat, index, recordObject }) {
         }
     }, [playAll, loopStart, record])
 
-    if (beatRef.current) {
+    if (beatRef.current) { // styling purposes, and playback rate definition
         audioRef.current.playbackRate = speed
         beatRef.current.style.boxShadow = beatStateCheck === "on" ? "0 0 10px 10px #eff, 0 0 15px 15px yellow" : ((beatState && (loopStart || record || playRecord)) || playAll) ? "0 0 10px 10px #eff, 0 0 15px 15px green" : "0 0 10px 10px #eff, 0 0 12px 12px #0ff"
         beatRef.current.style.backgroundColor = ((beatState && (loopStart || record || playRecord)) || playAll) ? "#777" : "#444"

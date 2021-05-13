@@ -96,10 +96,9 @@ function Controller({ setRecordObject }) {
                 className="slider"
                 defaultValue={1}
                 onChange={(e, value) => setSpeed(value)}
-                // aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
                 step={0.25}
-                min={0.25}
+                min={0}
                 max={2}
                 disabled={loopStart || playAll || record || playRecord ? true : false}
             />
