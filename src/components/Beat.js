@@ -41,10 +41,10 @@ function Beat({ beat, index, recordObject }) {
                     } else { // delay the beat until next loop start
                         const timeDelyed = 8000 * (1 / speed) - ((Number(new Date()) - startTime) % 8000 * (1 / speed));
                         setBeatStateCheck("on")
-                        record && setRecordObject(prev => [...prev, { time: new Date() - startTime, index: index, type: "check" }])
                         setTimeout(() => { // check the beat status
                             setBeatStateCheck(true);
                         }, timeDelyed);
+                        record && setRecordObject(prev => [...prev, { time: new Date() - startTime, index: index, type: "check" }])
                     }
                 } else {
                     record && startTime && setRecordObject(prev => [...prev, { time: new Date() - startTime, index: index, type: "pause" }])
