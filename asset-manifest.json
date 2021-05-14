@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/loop-machine/static/css/main.a7927835.chunk.css",
-    "main.js": "/loop-machine/static/js/main.4376042f.chunk.js",
-    "main.js.map": "/loop-machine/static/js/main.4376042f.chunk.js.map",
+    "main.js": "/loop-machine/static/js/main.3ecaac07.chunk.js",
+    "main.js.map": "/loop-machine/static/js/main.3ecaac07.chunk.js.map",
     "runtime-main.js": "/loop-machine/static/js/runtime-main.eb035683.js",
     "runtime-main.js.map": "/loop-machine/static/js/runtime-main.eb035683.js.map",
-    "static/js/2.8613db14.chunk.js": "/loop-machine/static/js/2.8613db14.chunk.js",
-    "static/js/2.8613db14.chunk.js.map": "/loop-machine/static/js/2.8613db14.chunk.js.map",
+    "static/js/2.599f51a4.chunk.js": "/loop-machine/static/js/2.599f51a4.chunk.js",
+    "static/js/2.599f51a4.chunk.js.map": "/loop-machine/static/js/2.599f51a4.chunk.js.map",
     "index.html": "/loop-machine/index.html",
     "static/css/main.a7927835.chunk.css.map": "/loop-machine/static/css/main.a7927835.chunk.css.map",
-    "static/js/2.8613db14.chunk.js.LICENSE.txt": "/loop-machine/static/js/2.8613db14.chunk.js.LICENSE.txt",
+    "static/js/2.599f51a4.chunk.js.LICENSE.txt": "/loop-machine/static/js/2.599f51a4.chunk.js.LICENSE.txt",
     "static/media/120_stutter_breakbeats_16.37c82282.mp3": "/loop-machine/static/media/120_stutter_breakbeats_16.37c82282.mp3",
     "static/media/Bass Warwick heavy funk groove on E 120 BPM.52c24c81.mp3": "/loop-machine/static/media/Bass Warwick heavy funk groove on E 120 BPM.52c24c81.mp3",
     "static/media/FUD_120_StompySlosh.27bdc145.mp3": "/loop-machine/static/media/FUD_120_StompySlosh.27bdc145.mp3",
@@ -23,8 +23,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.eb035683.js",
-    "static/js/2.8613db14.chunk.js",
+    "static/js/2.599f51a4.chunk.js",
     "static/css/main.a7927835.chunk.css",
-    "static/js/main.4376042f.chunk.js"
+    "static/js/main.3ecaac07.chunk.js"
   ]
 }
