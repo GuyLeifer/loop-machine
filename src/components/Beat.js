@@ -35,6 +35,9 @@ function Beat({ beat, index, recordObject }) {
                         audioRef.current.play();
                         setStartTime(Number(new Date()));
                         record && setRecordObject([{ time: 0, index: index, type: "start" }])
+                    } else if (speed === 0) { // play without waiting for next loop
+                        audioRef.current.play();
+                        record && setRecordObject(prev => [...prev, { time: new Date() - startTime, index: index, type: "check" }])
                     } else { // delay the beat until next loop start
                         const timeDelyed = 8000 * (1 / speed) - ((Number(new Date()) - startTime) % 8000 * (1 / speed));
                         setBeatStateCheck("on")
@@ -109,7 +112,7 @@ function Beat({ beat, index, recordObject }) {
     }, [playAll, loopStart, record])
 
     if (beatRef.current) { // styling purposes, and playback rate definition
-        audioRef.current.playbackRate = speed
+        speed !== 0 ? audioRef.current.playbackRate = speed : audioRef.current.playbackRate = 1 // if playback rate is 0 you can play without waiting for next loop
         beatRef.current.style.boxShadow = beatStateCheck === "on" ? "0 0 10px 10px #eff, 0 0 15px 15px yellow" : ((beatState && (loopStart || record || playRecord)) || playAll) ? "0 0 10px 10px #eff, 0 0 15px 15px green" : "0 0 10px 10px #eff, 0 0 12px 12px #0ff"
         beatRef.current.style.backgroundColor = ((beatState && (loopStart || record || playRecord)) || playAll) ? "#777" : "#444"
     }
