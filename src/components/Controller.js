@@ -71,7 +71,7 @@ function Controller({ setRecordObject }) {
     const playRecorder = () => {
         setSpeedState(speed);
         setRecordObject(recordObject);
-        setPlayRecord(true);
+        !loopStart && !playAll && !record && setPlayRecord(prev => !prev);
     }
 
     return (
@@ -89,7 +89,7 @@ function Controller({ setRecordObject }) {
                     <FaRecordVinyl className="iconStyle" />
                 </div>
                 <div className={(!playAll && !loopStart && !record && recordObject.length > 0) ? "iconsDivStyle" : "iconsDivDisabledStyle"}>
-                    {playRecord ? <BiStopCircle className="iconStyle" onClick={() => setPlayRecord(false)} /> : <BiPlayCircle className="iconStyle" onClick={playRecorder} />}
+                    {playRecord ? <BiStopCircle className="iconStyle" onClick={playRecorder} /> : <BiPlayCircle className="iconStyle" onClick={playRecorder} />}
                 </div>
             </div>
             <SliderSpeed
