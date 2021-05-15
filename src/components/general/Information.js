@@ -33,6 +33,10 @@ function About({ isOpen, setIsOpen }) {
                     <div className="text">Record</div>
                 </div>
                 <div className="infoIcon">
+                    <div className="icon-info"><FaRecordVinyl className="recording" /></div>
+                    <div className="text">Stop Record</div>
+                </div>
+                <div className="infoIcon">
                     <div className="icon-info"><BiStopCircle /></div>
                     <div className="text">Stop</div>
                 </div>
