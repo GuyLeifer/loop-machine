@@ -50,13 +50,14 @@
     align-items: center;
 }
 
-.icon-about {
+.icon-info {
     width: 50%;
 }
 
 .text {
     width: 50%;
 }
+
 
 @media only screen and (max-width: 800px) {
     .content {
@@ -65,11 +66,17 @@
 }
 
 @media only screen and (max-width: 400px) {
-    .icon-about {
+    .icon-info {
         width: 30%;
     }
 
     .text {
         width: 70%;
     }
+
+    .slider-img {
+        width: 100%;
+        height: auto;
+    }
+
 }

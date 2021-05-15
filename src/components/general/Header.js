@@ -1,19 +1,19 @@
 import { useState } from "react";
 import './Header.css';
-import About from './About';
+import Information from './Information';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 
 function Header() {
 
-    const [about, setAbout] = useState(false);
+    const [information, setInformation] = useState(false);
 
     return (
         <div className="header" >
             <span>Loop Machine</span>
             <div className="about">
-                <AiOutlineInfoCircle onClick={() => setAbout(prev => !prev)} />
+                <AiOutlineInfoCircle onClick={() => setInformation(prev => !prev)} />
             </div>
-            {about && <About isOpen={about} setIsOpen={setAbout} />}
+            {information && <Information isOpen={information} setIsOpen={setInformation} />}
         </div>
     )
 }
