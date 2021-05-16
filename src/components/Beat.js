@@ -117,6 +117,10 @@ function Beat({ beat, index, recordObject }) {
         beatRef.current.style.backgroundColor = ((beatState && (loopStart || record || playRecord)) || playAll) ? "#777" : "#444"
     }
 
+    useEffect(() => {
+        audioRef.current.load();
+    }, []);
+
     return (
         <div className="beat" ref={beatRef}>
             <div className="miniBeatStyle" onClick={clickBeatHandle}>
